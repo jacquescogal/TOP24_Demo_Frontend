@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/TOP24_Demo_Frontend/static/css/main.67ead438.css",
-    "main.js": "/TOP24_Demo_Frontend/static/js/main.78fa6ee2.js",
-    "static/js/787.bd3527f7.chunk.js": "/TOP24_Demo_Frontend/static/js/787.bd3527f7.chunk.js",
-    "static/media/logo.svg": "/TOP24_Demo_Frontend/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/TOP24_Demo_Frontend/index.html",
-    "main.67ead438.css.map": "/TOP24_Demo_Frontend/static/css/main.67ead438.css.map",
-    "main.78fa6ee2.js.map": "/TOP24_Demo_Frontend/static/js/main.78fa6ee2.js.map",
-    "787.bd3527f7.chunk.js.map": "/TOP24_Demo_Frontend/static/js/787.bd3527f7.chunk.js.map"
+    "main.css": "/static/css/main.67ead438.css",
+    "main.js": "/static/js/main.3b392ce1.js",
+    "static/js/787.bd3527f7.chunk.js": "/static/js/787.bd3527f7.chunk.js",
+    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/index.html",
+    "main.67ead438.css.map": "/static/css/main.67ead438.css.map",
+    "main.3b392ce1.js.map": "/static/js/main.3b392ce1.js.map",
+    "787.bd3527f7.chunk.js.map": "/static/js/787.bd3527f7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.67ead438.css",
-    "static/js/main.78fa6ee2.js"
+    "static/js/main.3b392ce1.js"
   ]
 }
