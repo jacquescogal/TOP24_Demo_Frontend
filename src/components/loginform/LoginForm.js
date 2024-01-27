@@ -1,11 +1,13 @@
 import React from 'react'
 import style from './LoginForm.module.scss'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 const LoginForm = () => {
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [team, setTeam] = React.useState('Zagreus');
-    //use axios to send to /user/login at https://top24-backend-demo.onrender.com/
+    let navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault(); 
@@ -15,10 +17,14 @@ const LoginForm = () => {
             username: username,
             password: password
         }
-        console.log('test')
+        toast.info('Logging in...');
         axios.post('https://top24-backend-demo.onrender.com/user/login', payload).then((res) => {
+            localStorage.setItem('token', 'Bearer ' + res.data.token);
             console.log(res.data);
+            toast.success('Login Successful!');
+            navigate('/aphrodite')
         }).catch((err) => {
+            toast.error('Login Failed!');
             console.log(err);
         }
         )
