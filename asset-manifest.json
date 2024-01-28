@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/TOP24_Demo_Frontend/static/css/main.c82eebca.css",
-    "main.js": "/TOP24_Demo_Frontend/static/js/main.806293d9.js",
+    "main.css": "/TOP24_Demo_Frontend/static/css/main.3af6d19d.css",
+    "main.js": "/TOP24_Demo_Frontend/static/js/main.84d2832a.js",
     "static/js/787.bd3527f7.chunk.js": "/TOP24_Demo_Frontend/static/js/787.bd3527f7.chunk.js",
     "static/media/logo.svg": "/TOP24_Demo_Frontend/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/TOP24_Demo_Frontend/index.html",
-    "main.c82eebca.css.map": "/TOP24_Demo_Frontend/static/css/main.c82eebca.css.map",
-    "main.806293d9.js.map": "/TOP24_Demo_Frontend/static/js/main.806293d9.js.map",
+    "main.3af6d19d.css.map": "/TOP24_Demo_Frontend/static/css/main.3af6d19d.css.map",
+    "main.84d2832a.js.map": "/TOP24_Demo_Frontend/static/js/main.84d2832a.js.map",
     "787.bd3527f7.chunk.js.map": "/TOP24_Demo_Frontend/static/js/787.bd3527f7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c82eebca.css",
-    "static/js/main.806293d9.js"
+    "static/css/main.3af6d19d.css",
+    "static/js/main.84d2832a.js"
   ]
 }
