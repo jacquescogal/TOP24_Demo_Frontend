@@ -7,43 +7,42 @@ const LoginForm = () => {
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [team, setTeam] = React.useState('Zagreus');
+    const host=process.env.REACT_APP_BACKEND
+
     let navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault(); 
-        console.log(username);
-        console.log(password);
         const payload = {
             username: username,
             password: password
         }
         toast.info('Logging in...');
-        axios.post('https://top24-backend-demo.onrender.com/user/login', payload).then((res) => {
+        axios.post(host+'/user/login', payload).then((res) => {
             localStorage.setItem('token', 'Bearer ' + res.data.token);
             console.log(res.data);
             toast.success('Login Successful!');
             navigate('/aphrodite')
         }).catch((err) => {
             toast.error('Login Failed!');
-            console.log(err);
+            console.log(err.response.data.message);
         }
         )
     }
 
     const handleRegisterSubmit = (event) => {
         event.preventDefault(); 
-        console.log(username);
-        console.log(password);
-        console.log(team);
         const payload = {
             username: username,
             password: password,
             team_name: team
         }
-        axios.post('https://top24-backend-demo.onrender.com/user/register', payload).then((res) => {
+        axios.post(host+'/user/register', payload).then((res) => {
             console.log(res.data);
+            toast.success('Registration Successful!');
         }).catch((err) => {
-            console.log(err);
+            console.log(err.response.data.message);
+            toast.error('Registration Failed!');
         }
         )
     }

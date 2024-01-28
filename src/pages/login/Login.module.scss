@@ -8,11 +8,13 @@
     //make children center
     justify-content: center;
     align-items: center;
+    user-select: none;
     .Backdrop{
         width: 100%;
         height: 100%;
         object-fit: cover;
         z-index: -1;
+        user-select: none;
     }
 
 }

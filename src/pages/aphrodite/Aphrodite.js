@@ -2,8 +2,12 @@ import React, { useEffect, useState } from 'react'
 import style from './Aphrodite.module.scss'
 import { toast } from 'react-toastify'
 import axios from 'axios'
+import { VscDebugRestart } from 'react-icons/vsc'
+import { FaExchangeAlt } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 
 const Aphrodite = () => {
+    const navigate = useNavigate()
     const [messages, setMessages] = useState([
         
     ])
@@ -12,12 +16,31 @@ const Aphrodite = () => {
     ])
 
     const [choicesSelected, setChoicesSelected] = useState([]) //list of strings
+    const [done,setDone] = useState(false);
+    // const host='https://top24-backend-demo.onrender.com'
+    const host=process.env.REACT_APP_BACKEND
 
-    const host='https://top24-backend-demo.onrender.com'
-    // const host='http://localhost:8000'
+    useEffect(()=>{
+        const token=localStorage.getItem('token')
+        axios.get(host+'/user/check_token', {
+    headers: {
+        'Authorization': `${token}`
+    }
+    })
+    .then(response => {
+        console.log(response.data);
+    })
+    .catch(error => {
+        toast.error('Invalid or expired token')
+        navigate('/')
+        console.error('There was an error!', error);
+    });
+    },[])
     useEffect(()=>{
         axios.post(host+'/talk',{
-            choiceList:[]
+            choiceList:[],
+            god:'aphrodite',
+            state:'normal'
         }).then((res)=>{
             console.log(res.data);
             setMessages([{role:'deity',message:res.data.message}]);
@@ -29,6 +52,7 @@ const Aphrodite = () => {
 
             setChoices(choicesList);
             console.log(choices)
+            
         }
         ).catch((err)=>{
             console.log(err);
@@ -44,7 +68,9 @@ const Aphrodite = () => {
         await new Promise(resolve => setTimeout(resolve, 2000));
 
         const payload = {
-            choiceList: updatedChoicesSelected
+            choiceList: updatedChoicesSelected,
+            god:'aphrodite',
+            state:'normal'
         }
         axios.post(host+'/talk',payload).then((res)=>{
             console.log(res.data);
@@ -58,10 +84,44 @@ const Aphrodite = () => {
 
             setChoices(choicesList);
             console.log(choices)
+            if (choicesList.length===0){
+                setDone(true);
+            }
+            else{
+                setDone(false);
+            }
         }
         ).catch((err)=>{
             console.log(err);
         })
+    }
+
+    const restart = async () => {
+        const updatedChoicesSelected = [];
+        setChoicesSelected(updatedChoicesSelected);
+        setDone(false);
+        axios.post(host+'/talk',{
+            choiceList:[],
+            god:'aphrodite',
+            state:'normal'
+        }).then((res)=>{
+            console.log(res.data);
+            setMessages([{role:'Deity',message:res.data.message}]);
+
+            const choicesList = Object.entries(res.data.choices).map(([choice_key, choice_info]) => ({
+                choice_key,
+                choice_info
+            }));
+
+            setChoices(choicesList);
+            console.log(choices)
+        }
+        ).catch((err)=>{
+            console.log(err);
+        })
+    }
+    const switchState = async () => {
+        navigate('/aphrodite_disguised')
     }
   return (
     <div className={style.Holder}>
@@ -84,6 +144,12 @@ const Aphrodite = () => {
                     </div>
                 )
             })}
+            </div>
+            {done===true && <div className={style.Restart} onClick={restart}>
+            <VscDebugRestart color='white' size={28} />
+            </div>}
+            <div className={style.Switcher} onClick={switchState}>
+            <FaExchangeAlt color='white' size={28}/>
             </div>
         <img className={style.Backdrop} src="https://images.unsplash.com/photo-1532698995422-ac0f009ade44?q=80&w=2971&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
     </div>

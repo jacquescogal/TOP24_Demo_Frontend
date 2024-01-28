@@ -37,17 +37,18 @@
         top:0;
         opacity: 0;
         transition: all 0.5s ease-in-out;
-        transform: rotateX(45deg);
+        transform: rotateX(45deg) scale(0.7);
 
         &:nth-last-child(3){
             top: 10%;
             opacity: 0.6;
-            transform: rotateX(30deg);
+            transform: rotateX(30deg) scale(0.8);
         }
         &:nth-last-child(2){
             top: 30%;
             opacity: 0.6;
             transform: rotateX(15deg);
+            transform: rotateX(30deg) scale(0.9);
         }
         &:nth-last-child(1){
             top: 50%;
@@ -69,7 +70,10 @@
         &.Player{
             background-color: #fffff0;
             color: black;
-        
+        }
+        &.Deity{
+            background-color: #010101;
+            color: white;
         }
     }
     .ConversationBackdrop{
@@ -93,13 +97,14 @@
     justify-content: center;
     .Choice{
         position: relative;
-        width: fit-content;
+        width: 100px;
         height: fit-content;
+        word-break:normal;
         object-fit: cover;
         z-index: 100;
         background-color: white;
-        margin-left: 100px;
-        margin-right: 100px;
+        margin-left: 50px;
+        margin-right: 50px;
         padding: 10px;
         transition: all 0.5s ease-in-out;
         animation: appear 0.5s ease-in-out 0s forwards;
@@ -121,8 +126,108 @@
             
         }
     }
+    //change .choice on phone screen width
+    @media (max-width: 600px) {
+        .Choice{
+            width: 100px;
+            height: fit-content;
+            word-break:normal;
+            object-fit: cover;
+            z-index: 100;
+            background-color: white;
+            margin-left: 5px;
+            margin-right: 5px;
+            padding: 5px;
+            transition: all 0.5s ease-in-out;
+            animation: appear 0.5s ease-in-out 0s forwards;
+            user-select: none;
+            &:hover{
+                cursor: pointer;
+                scale: 1.2;
+                background-color: #fffff0;
+            }
+            @keyframes appear {
+                0% {
+                    transform: translateY(100px);
+                    opacity: 0;
+                }
+                100% {
+                    transform: translateY(0px);
+                    opacity: 1;
+                }
+                
+            }
+        }
+    }
     
 }
 .ButtonTest{
     z-index: 1000;
+}
+
+.Restart{
+    position: fixed;
+    top: 70vh;
+    right: 50vw;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    border-radius: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.5s ease-in-out;
+    animation: appear 0.5s ease-in-out 0s;
+    user-select: none;
+    &:hover{
+        cursor: pointer;
+        scale: 1.2;
+        animation: spin 1s ease-in-out 0s infinite forwards;
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(-360deg);
+            }
+        }
+    }
+    @keyframes appear {
+        0% {
+            opacity: 0.5;
+        }
+        100% {
+            opacity: 1;
+        }
+        
+    }
+}
+.Switcher{
+    position: fixed;
+    top: 90vh;
+    right: 50vw;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.5s ease-in-out;
+    animation: appear 0.5s ease-in-out 0s;
+    user-select: none;
+    &:hover{
+        cursor: pointer;
+        scale: 1.2;
+    }
+    @keyframes appear {
+        0% {
+            opacity: 0.5;
+        }
+        100% {
+            opacity: 1;
+        }
+        
+    }
 }
