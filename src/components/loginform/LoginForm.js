@@ -4,8 +4,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 const LoginForm = () => {
-    const [username, setUsername] = React.useState('');
-    const [password, setPassword] = React.useState('');
+    const [username, setUsername] = React.useState('jacques3');
+    const [password, setPassword] = React.useState('Greek2go');
     const [team, setTeam] = React.useState('Zagreus');
     const host=process.env.REACT_APP_BACKEND
 

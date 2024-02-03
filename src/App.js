@@ -12,7 +12,6 @@ import AphroditeDisguised from './pages/aphroditeDisguised/AphroditeDisguised';
 function App() {
   return (
     <>
-    <ToastContainer />
     <Router>
     <Routes>
         <Route path='/' element={<Login />}></Route>
